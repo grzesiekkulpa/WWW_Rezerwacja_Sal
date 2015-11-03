@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="projekt.admin1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+
+
+        .style2
+        {
+            color: #FFFFFF;
+            font-size: xx-large;
+        }
+        .style3
+        {
+            text-align: center;
+        }
+        .style4
+        {
+            width: 100%;
+        }
+    </style>
+</head>
+<body background="Images/background.jpg">
+    <form id="form1" runat="server">
+    <div>
+        <div class="style3">
+            <br />
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logotyp.gif" />
+        <span class="style2"><strong style="text-align: center">
+            <br />
+            <br />
+        Internetowy System Rezerwacji Sal<br />
+        Panel administracyjny</strong></span><br />
+            <br />
+            <table class="style4">
+                <tr>
+                    <td>
+                        <asp:Menu ID="Menu1" runat="server" BackColor="#0033CC" BorderColor="Black" 
+                            Font-Size="Large" ForeColor="White" Orientation="Horizontal">
+                            <DynamicHoverStyle BackColor="#66CCFF" Font-Bold="False" />
+                            <DynamicMenuItemStyle BackColor="#0033CC" Width="200px" />
+                            <DynamicItemTemplate>
+<%# Eval("Text") %>
+                            </DynamicItemTemplate>
+                            <Items>
+                                <asp:MenuItem Text="START" Value="Start" NavigateUrl="~/admin_start.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="PRACOWNICY" Value="Pracownicy">
+                                    <asp:MenuItem Text="Dodaj" Value="Dodaj" NavigateUrl="~/prac_add.aspx"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/prac_przeg.aspx" Text="Przeglądaj" 
+                                        Value="Przeglądaj"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="SALE" Value="SALE">
+                                    <asp:MenuItem Text="Dodaj sale" Value="Dodaj" NavigateUrl="~/sala_add.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Usuń sale" Value="Usuń" NavigateUrl="~/sala_del.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Dodaj typ" Value="Dodaj typ" NavigateUrl="~/typ_add.aspx"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/sale_przeg.aspx" Text="Przeglądaj" 
+                                        Value="Przeglądaj"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="REZERWACJE" Value="REZERWACJE">
+                                    <asp:MenuItem Text="Przeglądaj" Value="Przeglądaj" 
+                                        NavigateUrl="~/rez_przeg.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Anuluj" Value="Anuluj" NavigateUrl="~/rez_del.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="WYPOSAŻENIE" Value="WYPOSAŻENIE">
+                                    <asp:MenuItem Text="Dodaj" Value="Dodaj" NavigateUrl="~/wyp_add.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Usuń" Value="Usuń" NavigateUrl="~/wyp_dell.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Przeglądaj" Value="przeglądaj" 
+                                        NavigateUrl="~/wyp_przeg.aspx"></asp:MenuItem>
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="WYPOSAŻENIE SALI" Value="Wyposażenie sali">
+                                    <asp:MenuItem NavigateUrl="~/wyp_sali.aspx" Text="Zdefiniuj" Value="Zdefiniuj">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/wyp_sali_przeg.aspx" Text="Przeglądaj" 
+                                        Value="Przeglądaj"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/wyp_sali_del.aspx" Text="Usuń" Value="Usuń">
+                                    </asp:MenuItem>
+                                </asp:MenuItem>
+                            </Items>
+                            <StaticHoverStyle BackColor="#66CCFF" Font-Bold="False" />
+                            <StaticMenuItemStyle Width="200px" />
+                        </asp:Menu>
+                    </td>
+                </tr>
+            </table>
+        </div>
+      
+
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <div id="nav">
+            <p>
+                &nbsp;</p>
+        </div>
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
