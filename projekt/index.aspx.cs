@@ -53,8 +53,6 @@ namespace projekt
                                 HttpCookie cookie = new HttpCookie(
                                 FormsAuthentication.FormsCookieName,
                                 FormsAuthentication.Encrypt(bilet));
-                                //if (!Roles.RoleExists("admins")) Roles.CreateRole("admins");
-                                //if (!Roles.IsUserInRole(login, "admins")) Roles.AddUserToRole(login, "admins");
                                 Response.Cookies.Add(cookie);
                               
                                 Response.Redirect("admin_start.aspx");
