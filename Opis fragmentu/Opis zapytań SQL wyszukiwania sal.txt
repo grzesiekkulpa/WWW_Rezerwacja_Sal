@@ -1,0 +1,29 @@
+Opis generowania zapytañ dla wyszukiwania sal
+
+Wyszukiwanie sal z uwzglêdnieniem parametrów podanych przez u¿ytkownika
+wymaga³o korzystania z 3 tabel: sala, typ sali, wyposa¿enie oraz wyposa¿enie sali.
+W metodzie Page_Load strony z tabeli typ sali pobierane s¹ wszystkie dostêpne typy
+i umieszczane s¹ na rozwijanej liœcie. U¿ytkownik mo¿e nastêpnie wybraæ jaki typ go 
+interesuje spoœród wszystkich dostêpnych w bazie. W podobny sposób pobierane s¹ nazwy
+dostêpnych wyposa¿eñ i umieszczane s¹ na liœcie CheckBoxList. U¿ytkownik mo¿e póŸniej 
+dziêki temu zaznaczyæ jakie wyposa¿enie powinna mieæ szukana sala.
+Na stronie jest rónie¿ pole tekstowe w któe u¿ytkownik wpisuje ¿¹dan¹ pojemnoœæ sali.
+Nastêpnie po klikniêciu przycisku wyszukaj generowane jest zaytanie:
+
+string sql = "SELECT id_sali FROM sala WHERE typ_sali = '" + typ_sali + "' AND pojemnosc >= '" + pojemnosc + "'";
+
+Nastêpnie przy u¿yciu pêtli sprawdzane jest jakie wyposa¿enia zaznaczy³ u¿ytkownik:
+
+for (int i = 0; i < ilosc_wyposazen; i++)
+                {
+                        if (CheckBoxList1.Items[i].Selected)
+                        {
+                            string id_wyp = CheckBoxList1.Items[i].Value.ToString();
+                            sql += "INTERSECT SELECT id_sali FROM wyp_sali where id_wyp = '" + id_wyp + "'";
+                        }
+                }
+                
+Jak widaæ je¿eli danych CheckBox jest zaznaczony to do zapytania dodawany jest fragment z funkcj¹ INTERSECT 
+zwracaj¹cy czêœæ wspóln¹ w postaci Id_sali która spe³nia wszystkie wymagania u¿ytkownika. Je¿eli zaznaczono 
+wiêcej ni¿ jedno wyposa¿enie to dodawana jest odpowiednia iloœæ fragmentów ze s³owem kluczowym INTERSECT.
+Tak wygenerowane zapytanie pozwala wyszukiwaæ sale o podanych kryteriach których dane znajduj¹ siê w kilku tabelach.
