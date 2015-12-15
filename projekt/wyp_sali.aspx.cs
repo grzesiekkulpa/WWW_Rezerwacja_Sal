@@ -38,9 +38,10 @@ namespace projekt
                         if (DropDownList1.Items.Count == 0 && DropDownList2.Items.Count == 0)
                         {
                             
-                            NpgsqlCommand count = new NpgsqlCommand("select count(*) from wyposazenie", conn);
-                            int coun = (Int32)count.ExecuteScalar();
-                            string[] tab1 = new string[coun];
+                            NpgsqlCommand count = new NpgsqlCommand("select count(id_wyp) from wyposazenie", conn);
+                            string liczba = count.ExecuteScalar().ToString();
+                            int coun = System.Int32.Parse(liczba);
+                            string[] tab1 = new string[50];
                             NpgsqlDataReader dr1 = command1.ExecuteReader();
                             int i = 0;
                             {

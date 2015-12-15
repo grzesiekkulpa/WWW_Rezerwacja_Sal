@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="user.master.cs" Inherits="projekt.user" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            text-align: left;
+        }
+        .style2
+        {
+            text-align: center;
+        }
+        .style3
+        {
+            font-size: xx-large;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body background="Images/background.jpg">
+    <form id="form1" runat="server">
+    <div class="style1">
+        <div class="style2">
+            <br />
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logotyp.gif" />
+            <br />
+            <br />
+            <br />
+            <span class="style2"><strong style="text-align: center">
+            <span class="style3">Internetowy System Rezerwacji Sal</span><br 
+                class="style3" />
+            </strong></span>
+            <br />
+                        <asp:Menu ID="Menu1" runat="server" BackColor="#0033CC" BorderColor="Black" 
+                            Font-Size="Large" ForeColor="White" Orientation="Horizontal">
+                            <DynamicHoverStyle BackColor="#66CCFF" Font-Bold="False" />
+                            <DynamicMenuItemStyle BackColor="#0033CC" Width="200px" />
+                            <DynamicItemTemplate>
+<%# Eval("Text") %>
+                            </DynamicItemTemplate>
+                            <Items>
+                                <asp:MenuItem Text="START" Value="Start" NavigateUrl="~/user.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="NOWA REZERWACJA" Value="NR" 
+                                    NavigateUrl="~/user_rezerwuj.aspx">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="MOJE REZERWACJE" Value="MR" 
+                                    NavigateUrl="~/user_moje_rez.aspx">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="SZUKAJ SALI" Value="SZS" 
+                                    NavigateUrl="~/user_szukaj_sali.aspx">
+                                </asp:MenuItem>
+                                <asp:MenuItem Text="DOSTĘPNE SALE" Value="DS" NavigateUrl="~/user_sale.aspx">
+                                </asp:MenuItem>
+                            </Items>
+                            <StaticHoverStyle BackColor="#66CCFF" Font-Bold="False" />
+                            <StaticMenuItemStyle Width="200px" />
+                        </asp:Menu>
+                    </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
